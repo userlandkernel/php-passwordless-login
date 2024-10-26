@@ -24,7 +24,7 @@ if (!CheckAuthenticated()) {
                 echo "Invalid signature";
             }
         } else {
-            echo $_SESSION["error"];
+           echo htmlentities($_SESSION["error"], ENT_QUOTES, 'UTF-8');
         }
     
         
