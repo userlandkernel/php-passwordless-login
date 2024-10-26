@@ -4,7 +4,7 @@ function GenerateAuthToken(){
 }
 
 function AuthenticateRSA($pubkeyFile, $signature) {	
-    $publicKey = file_get_contents($pubkeyFile);
+    $publicKey = file_get_contents(basename($pubkeyFile));
     echo $publicKey;
     $verifyResult = openssl_verify($_SESSION['AuthToken'], base64_decode($signature), $publicKey, OPENSSL_ALGO_SHA256);
     return $verifyResult;
