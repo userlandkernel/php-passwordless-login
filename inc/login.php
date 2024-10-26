@@ -16,7 +16,7 @@ if (!CheckAuthenticated()) {
         $_SESSION["USERNAME"] = $_POST['username']; 
     
         if ( GetUserData() ) {
-            if(AuthenticateRSA($_SESSION["PUBKEY"], $_POST["signature"])) {
+            if(AuthenticateRSA(filter_var($_SESSION["PUBKEY"]), filter_var($_POST["signature"]))) {
                 $_SESSION["active"] = 1;
                 header("Refresh:0"); // Reload page to be logged in
             }
